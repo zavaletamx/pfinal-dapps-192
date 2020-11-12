@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/signup"
+            android:layout_margin="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Registro"
+            android:textAlignment="center"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:layout_margin="30dp"/>
+
+        <EditText
+            android:id="@+id/et_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:layout_margin="30dp"/>
+
+        <EditText
+            android:id="@+id/et_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pin (6 dígitos)"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:layout_margin="30dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="Registrarse"
+            android:onClick="registroUsuarioBD"/>
+
+        <ProgressBar
+            android:id="@+id/pb_registro"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:indeterminate="true"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_500"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
