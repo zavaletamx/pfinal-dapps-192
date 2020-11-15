@@ -1,5 +1,8 @@
 package mx.edu.uteq.dapps.proyectofinal192;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -8,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor prefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,5 +66,37 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+        alerta.setTitle("Cerrar sesión")
+                .setMessage("¿Realmente deseas salir?")
+                .setPositiveButton("Si, salir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        prefs = getSharedPreferences("musicapp", MODE_PRIVATE);
+                        prefsEditor = prefs.edit();
+
+                        /*Limpiamos nuestras variables d epreferencias del archivo local*/
+                        //PARA BORRAR UNO POR UNO
+                        // prefsEditor.remove("CLAVE")
+
+                        //PARA BORRAR TODOS
+                        prefsEditor.clear();
+                        prefsEditor.commit();
+
+                        startActivity(new Intent(
+                                MainActivity.this,
+                                LoginActivity.class
+                        ));
+                    }
+                })
+                .setNegativeButton("No, quedarse", null)
+                .setIcon(R.drawable.music)
+                .setCancelable(false)
+                .show();
     }
 }

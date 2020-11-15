@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinal192">
 
-        <activity android:name=".LoginActivity" android:label="MusicApp">
+        <activity android:name=".LoginActivity" android:label="MusicApp 192">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
