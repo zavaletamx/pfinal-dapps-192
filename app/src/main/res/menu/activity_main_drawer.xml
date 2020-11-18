@@ -6,15 +6,36 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:icon="@drawable/ic_app_settings_alt"
+            android:title="Mi cuenta" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_groups"
+            android:title="Intérpretes" />
+
+        <item
+            android:id="@+id/nav_albums"
+            android:icon="@drawable/ic_album"
+            android:title="Albums" />
+
+        <item
+            android:id="@+id/nav_canciones"
+            android:icon="@drawable/ic_library_music"
+            android:title="Canciones" />
+
+        <item
+            android:id="@+id/nav_listad"
+            android:icon="@drawable/ic_shopping_basket"
+            android:title="Lista de deseos" />
+
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/ic_power_settings_new"
+            android:title="Cerrar sesión" />
+
     </group>
 </menu>
