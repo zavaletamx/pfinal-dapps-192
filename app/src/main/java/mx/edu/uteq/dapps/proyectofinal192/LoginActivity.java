@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                 Request.Method.POST,
 
                 //P2
-                "http://cidtai.uteq.edu.mx/dapps/api-192/auth/login",
+                "https://wikiclod.mx/dapps/api-192/auth/login",
 
                 //P3
                 new Response.Listener<String>() {

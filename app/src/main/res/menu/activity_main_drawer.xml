@@ -5,15 +5,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_inicio"
             android:icon="@drawable/ic_home"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_cuenta"
             android:icon="@drawable/ic_app_settings_alt"
             android:title="Mi cuenta" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_interpretes"
             android:icon="@drawable/ic_groups"
             android:title="Intérpretes" />
 
@@ -31,11 +31,6 @@
             android:id="@+id/nav_listad"
             android:icon="@drawable/ic_shopping_basket"
             android:title="Lista de deseos" />
-
-        <item
-            android:id="@+id/nav_salir"
-            android:icon="@drawable/ic_power_settings_new"
-            android:title="Cerrar sesión" />
 
     </group>
 </menu>
