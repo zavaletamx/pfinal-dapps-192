@@ -151,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                                 /*Agregamos el id del usuario en nuestro espacio de variables*/
                                 prefsEditor.putString("usuario_id", datosUsuario.getString("id"));
                                 prefsEditor.putString("telefono", datosUsuario.getString("tel"));
+                                prefsEditor.putString("userpic", datosUsuario.getString("userpic"));
 
                                 /*Escribimos los cambios en el archivo de configuracion*/
                                 prefsEditor.commit();

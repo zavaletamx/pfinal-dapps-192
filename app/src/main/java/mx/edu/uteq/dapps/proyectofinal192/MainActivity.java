@@ -4,13 +4,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -46,9 +50,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        prefs = getSharedPreferences("musicapp", MODE_PRIVATE);
+        String userPic = prefs.getString("userpic", null);
+
         /*Menu lateral (Drawer)*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        /*Tomamos el encabezado del menu y ponemos nuestra imagen*/
+        ImageView ivAvatar = navigationView.
+                getHeaderView(0).
+                findViewById(R.id.image_view_avatar);
+
+        Picasso
+                .with(this)
+                .load(userPic)
+                .into(ivAvatar);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -74,6 +92,23 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /*Metodo para el touch d elos elementos dle menu secundario*/
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        /*Tomamos el id del elemento del menu*/
+        int id = item.getItemId();
+
+        /*Dependiendo del id de cad amenu, agregamos su accion*/
+        switch (id) {
+            case R.id.salir :
+                salir();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -83,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        salir();
+    }
+
+    private void salir() {
         AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
         alerta.setTitle("Cerrar sesión")
                 .setMessage("¿Realmente deseas salir?")

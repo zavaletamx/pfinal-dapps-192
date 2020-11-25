@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_contenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_menu_camera"
+            android:drawableTint="#707070"
+            android:text=" Cambiar imágen de perfíl"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="500"
+            android:layout_margin="30dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_uripic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingresa la URL de la imágen"
+                android:inputType="textUri"
+                android:lines="3"/>
+
+            <Button
+                android:id="@+id/btn_guardaruserpic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Guardar"
+                android:layout_marginHorizontal="30dp"
+                android:padding="30dp"
+                android:drawableLeft="@drawable/ic_save"
+                android:drawableTint="#FFF"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_cargando"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pb_cim"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="30dp"
+            android:indeterminateTint="@color/purple_500" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Por favor espera..."
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="60dp"/>
+
+    </LinearLayout>
+</LinearLayout>
