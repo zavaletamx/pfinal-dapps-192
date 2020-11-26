@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/nav_albums"
-        android:name="mx.edu.uteq.dapps.proyectofinal192.ui.AlbumsFragment"
+        android:name="mx.edu.uteq.dapps.proyectofinal192.ui.album.AlbumsFragment"
         android:label="Álbums"
         tools:layout="@layout/fragment_albums" />
 
