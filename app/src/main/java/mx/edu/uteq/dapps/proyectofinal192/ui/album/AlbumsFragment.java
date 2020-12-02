@@ -1,5 +1,7 @@
 package mx.edu.uteq.dapps.proyectofinal192.ui.album;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +20,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import mx.edu.uteq.dapps.proyectofinal192.R;
 
@@ -31,6 +38,9 @@ public class AlbumsFragment extends Fragment {
     private RequestQueue conexionServ;
     private StringRequest peticionServ;
 
+    private SharedPreferences prefs;
+    private String usuarioId;
+
     public AlbumsFragment() {
         // Required empty public constructor
     }
@@ -44,6 +54,10 @@ public class AlbumsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
+
+        prefs = getActivity().getSharedPreferences("musicapp", Context.MODE_PRIVATE);
+        usuarioId = prefs.getString("usuario_id", null);
+
         srlAlbums = rootView.findViewById(R.id.srl_albums);
         lvAlbums = rootView.findViewById(R.id.lv_albums);
 
@@ -76,7 +90,7 @@ public class AlbumsFragment extends Fragment {
 
     private void cargaAlbums() {
         peticionServ = new StringRequest(
-                Request.Method.GET,
+                Request.Method.POST,
                 "https://wikiclod.mx/dapps/api-192/album/info",
                 new Response.Listener<String>() {
                     @Override
@@ -107,7 +121,15 @@ public class AlbumsFragment extends Fragment {
                         srlAlbums.setRefreshing(false);
                     }
                 }
-        );
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("usuario_id", usuarioId);
+
+                return params;
+            }
+        };
         conexionServ.add(peticionServ);
     }
 }
